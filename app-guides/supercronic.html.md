@@ -10,7 +10,7 @@ date: 2022-11-19
 redirect_from: /docs/app-guides/superchronic/
 ---
 
-`crontab` is a little too opinionated for containers—it's a great little tool, but when run inside of containers it doesn't grab `ENV` vars how we'd like it to. Fortunately there's a Go binary called `supercronic` that's a drop-in replacement for containers.
+`ab` is a little too opinionated for containers—it's a great little tool, but when run inside of containers it doesn't grab `ENV` vars how we'd like it to. Fortunately there's a Go binary called `supercronic` that's a drop-in replacement for containers.
 
 The good news is that it's pretty easy to get it running on Fly with a little bit of copy and pasting. Let's get to it.
 
@@ -52,7 +52,7 @@ COPY crontab crontab
 
 After you put that in your Dockerfile, we're going to configure Fly to run only once instance of `supercronic`. Why? Because if you have a cronjob that does something like deliver emails to customers, you only want them to get that once. The last thing you want is them getting as many emails from your services that matches the number of instances you're running.
 
-## Setup a web &amp; cront process
+## Setup a web &amp; cron process
 
 At the bottom of the `fly.toml` file, add the following:
 
